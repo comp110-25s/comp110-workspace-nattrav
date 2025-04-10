@@ -10,12 +10,14 @@ def invert(dictionary: dict[str, str]) -> dict[str, str]:
     for key in dictionary:
         if dictionary[key] in list_to_count:
             raise KeyError("Dictionary contains duplicate values")
-        # raises a KeyError if the value at that key is already in list_to_count because that means it's a repeat since it hasn't appended anything yet
+        # raises a KeyError if the value at that key is already in list_to_count
+        # because that means it's a repeat since it hasn't appended anything yet
         list_to_count.append(dictionary[key])
     for key in dictionary:
         value: str = dictionary[key]
         inverted_dict[value] = key
-        # goes through each value in dictionary, assigns it to a variable named value, then makes that value the key in a new dictionary inverted_dict and the old key the new value
+        # goes through each value in dictionary, assigns it to a variable named value,
+        #  then makes that value the key in a new dictionary inverted_dict and the old key the new value
     return inverted_dict
 
 
@@ -47,7 +49,8 @@ def favorite_color(fav_colors: dict[str, str]) -> str:
 
 
 def bin_len(to_bin: list[str]) -> dict[int, set[str]]:
-    """Bins a list of strings into a dictionary where the key is the length of the item and it's values are a set of strings from the item"""
+    """Bins a list of strings into a dictionary where the
+    key is the length of the item and it's values are a set of strings from the item"""
     binned: dict[int, set[str]] = {}
     for index in to_bin:
         characters: int = len(index)
