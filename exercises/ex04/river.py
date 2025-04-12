@@ -5,7 +5,7 @@ from exercises.EX04.bear import Bear
 
 
 class River:
-    """Defines the river class with bears and fish"""
+    """Defines the river class with bears and fish."""
 
     day: int
     # an int that tells you what day of the river's life cycle you are modeling
@@ -14,7 +14,7 @@ class River:
     # the lists represent the bear and fish populations
 
     def __init__(self, num_fish: int, num_bears: int):
-        """New River with num_fish Fish and num_bears Bears"""
+        """New River with num_fish Fish and num_bears Bears."""
         self.day: int = 0
         self.fish: list[Fish] = []
         self.bears: list[Bear] = []
@@ -25,7 +25,7 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
-        """Checks the ages and kills them if they are over a certain age"""
+        """Checks the ages and kills them if they are over a certain age."""
         index: int = 0
         for item in self.fish:
             if item.age > 3:
@@ -43,7 +43,7 @@ class River:
         return None
 
     def bears_eating(self):
-        """The bears eat 3 fish if there are at least 5 fish"""
+        """The bears eat 3 fish if there are at least 5 fish."""
         for bear in self.bears:
             if len(self.fish) >= 5:
                 bear.eat(3)
@@ -52,7 +52,7 @@ class River:
         return None
 
     def check_hunger(self):
-        """KIlls the bears if they starve"""
+        """KIlls the bears if they starve."""
         new_bear_list: list = self.bears
         index: int = 0
         for bear in new_bear_list:
@@ -65,7 +65,7 @@ class River:
         return None
 
     def repopulate_fish(self):
-        """If there are two fish, they will have 4 guppies"""
+        """If there are two fish, they will have 4 guppies."""
         n: int = len(self.fish)
         guppies: int = (n // 2) * 4
         while guppies >= 1:
@@ -75,7 +75,7 @@ class River:
         return None
 
     def repopulate_bears(self):
-        """If there are two bears, they will have 1 cub"""
+        """If there are two bears, they will have 1 cub."""
         n: int = len(self.bears)
         cubs: int = n // 2
         while cubs >= 1:
@@ -85,7 +85,7 @@ class River:
         return None
 
     def view_river(self):
-        """Tells you the day and populations"""
+        """Tells you the day and populations."""
         print(f"~~~ Day {self.day}: ~~~")
         print(f"Fish population: {len(self.fish)}")
         print(f"Bear population: {len(self.bears)}")
@@ -93,7 +93,7 @@ class River:
         return None
 
     def one_river_day(self):
-        """Simulate one day of life in the river"""
+        """Simulate one day of life in the river."""
         # Increase day by 1
         self.day += 1
         # Simulate one day for all Bears
@@ -116,7 +116,7 @@ class River:
         self.view_river()
 
     def one_river_week(self):
-        """Gives 7 days to make a week"""
+        """Gives 7 days to make a week."""
         River.one_river_day(self)
         River.one_river_day(self)
         River.one_river_day(self)
@@ -128,7 +128,7 @@ class River:
         return None
 
     def remove_fish(self, amount: int):
-        """Removes fish from the list"""
+        """Removes fish from the list."""
         new_fish_list: list = self.fish
         index: int = 0
         while index < amount:
