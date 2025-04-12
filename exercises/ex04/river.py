@@ -5,6 +5,8 @@ from exercises.EX04.bear import Bear
 
 
 class River:
+    """Defines the river class with bears and fish"""
+
     day: int
     # an int that tells you what day of the river's life cycle you are modeling
     bears: list[Bear]
@@ -23,32 +25,34 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
+        """Checks the ages and kills them if they are over a certain age"""
         index: int = 0
-        new_fish_list: list = []
         for item in self.fish:
             if item.age > 3:
                 self.fish.pop(index)
             else:
                 index += 1
-        self.fish = new_fish_list
+        # for every fish in the list it pops them off if the age is over 3
         index: int = 0
-        new_bears_list: list = []
         for item in self.bears:
             if item.age > 5:
                 self.bears.pop(index)
             else:
                 index += 1
-        self.bears = new_bears_list
+        # for every bear in the list it pops them off if the age is over 5
         return None
 
     def bears_eating(self):
+        """The bears eat 3 fish if there are at least 5 fish"""
         for bear in self.bears:
             if len(self.fish) >= 5:
                 bear.eat(3)
-                self.fish.pop(3)
+                self.remove_fish(3)
+        # goes through each index (bear) in the bear list and if there are more than 5 fish, the bear eats 3 and it removes it from the list
         return None
 
     def check_hunger(self):
+        """KIlls the bears if they starve"""
         new_bear_list: list = self.bears
         index: int = 0
         for bear in new_bear_list:
@@ -57,30 +61,35 @@ class River:
             else:
                 index += 1
         self.bears = new_bear_list
+        # Goes through each index in the bear list and pops off any starved bears
         return None
 
     def repopulate_fish(self):
+        """If there are two fish, they will have 4 guppies"""
         n: int = len(self.fish)
         guppies: int = (n // 2) * 4
-        x: int = 0
-        while x <= guppies:
+        while guppies >= 1:
             self.fish.append(Fish())
-            x += 1
+            guppies -= 1
+        # If there are two fish, they will have 4 babies and the base case keeps it from having infinite recursion
         return None
 
     def repopulate_bears(self):
+        """If there are two bears, they will have 1 cub"""
         n: int = len(self.bears)
-        cubs: int = (n // 2) * 4
-        x: int = 0
-        while x <= cubs:
+        cubs: int = n // 2
+        while cubs >= 1:
             self.bears.append(Bear())
-            x += 1
+            cubs -= 1
+        # If there are two bears they will have one cub that will be appended to the list and the base case is cubs -= 1 to prevent infinite recursion
         return None
 
     def view_river(self):
+        """Tells you the day and populations"""
         print(f"~~~ Day {self.day}: ~~~")
         print(f"Fish population: {len(self.fish)}")
         print(f"Bear population: {len(self.bears)}")
+        # uses f strings to print out the length of the lists of bears and fish as the population
         return None
 
     def one_river_day(self):
@@ -107,6 +116,7 @@ class River:
         self.view_river()
 
     def one_river_week(self):
+        """Gives 7 days to make a week"""
         River.one_river_day(self)
         River.one_river_day(self)
         River.one_river_day(self)
@@ -114,13 +124,16 @@ class River:
         River.one_river_day(self)
         River.one_river_day(self)
         River.one_river_day(self)
+        # calls the one_river_day function seven times to represent a week
         return None
 
     def remove_fish(self, amount: int):
+        """Removes fish from the list"""
         new_fish_list: list = self.fish
         index: int = 0
         while index < amount:
             new_fish_list.pop(index)
             index += 1
         self.fish = new_fish_list
+        # removes fish from the list by going through each index. uses a separate list to prevent self.fish from going back each index
         return None
