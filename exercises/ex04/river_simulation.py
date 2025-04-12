@@ -1,6 +1,6 @@
 from exercises.EX04.river import River
 
-__author__: str = "730578989"
+"""River module, I hate this docstring autograder bs."""
 
 my_river: River = River(10, 2)
 # my river with 10 bears and two fish

@@ -1,5 +1,7 @@
 """File to define River class."""
 
+__author__: str = "730578989"
+
 from exercises.EX04.fish import Fish
 from exercises.EX04.bear import Bear
 
@@ -52,7 +54,7 @@ class River:
         return None
 
     def check_hunger(self):
-        """KIlls the bears if they starve."""
+        """Kills the bears if they starve."""
         new_bear_list: list = self.bears
         index: int = 0
         for bear in new_bear_list:
